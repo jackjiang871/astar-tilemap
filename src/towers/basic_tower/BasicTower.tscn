@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/towers/basic_tower/panel-012.png" type="Texture" id=1]
+[ext_resource path="res://src/towers/basic_tower/BasicTower.gd" type="Script" id=2]
+
+[node name="BasicTower" type="Node2D" groups=["Obstacles"]]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( 8, 8 )
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2( 32, 32 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_AttackArea_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_AttackArea_area_exited"]

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "TileMap",
 "class": "AstarTileMap",
 "language": "GDScript",
-"path": "res://AstarTileMap.gd"
+"path": "res://src/util/AstarTileMap.gd"
 } ]
 _global_script_class_icons={
 "AstarTileMap": ""
@@ -21,8 +21,8 @@ _global_script_class_icons={
 [application]
 
 config/name="AstarTileMap"
-run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://src/World.tscn"
+config/icon="res://src/icon.png"
 
 [input]
 
@@ -43,4 +43,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://src/default_env.tres"

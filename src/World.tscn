@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/D6.png" type="Texture" id=1]
+[ext_resource path="res://src/towers/wall/Wall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/towers/basic_tower/BasicTower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/World.gd" type="Script" id=4]
+[ext_resource path="res://src/util/AstarTileMap.gd" type="Script" id=5]
+[ext_resource path="res://src/util/AstarDebug.gd" type="Script" id=6]
+
+[sub_resource type="TileSet" id=1]
+0/name = "D6.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="World" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Board" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131089, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0 )
+script = ExtResource( 5 )
+
+[node name="Wall" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 320, 192 )
+
+[node name="Wall2" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 320, 128 )
+
+[node name="Wall3" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 320, 64 )
+
+[node name="Wall4" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 576, 384 )
+
+[node name="Wall5" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 640, 384 )
+
+[node name="Wall6" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 512, 384 )
+
+[node name="Wall7" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 704, 320 )
+
+[node name="Wall8" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 448, 448 )
+
+[node name="Wall9" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 256, 384 )
+
+[node name="Wall11" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 320, 384 )
+
+[node name="Wall12" parent="Board" instance=ExtResource( 2 )]
+position = Vector2( 704, 128 )
+
+[node name="BasicTower" parent="Board" instance=ExtResource( 3 )]
+position = Vector2( 320, 256 )
+attack_range = 200
+attack_damage = 1
+attack_speed = 2
+
+[node name="BasicTower2" parent="Board" instance=ExtResource( 3 )]
+position = Vector2( 384, 256 )
+attack_range = 50
+attack_damage = 1
+
+[node name="AstarDebug" type="Control" parent="."]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+script = ExtResource( 6 )
+board = NodePath("../Board")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )

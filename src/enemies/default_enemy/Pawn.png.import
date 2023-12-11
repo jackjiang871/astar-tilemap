@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/D6.png-6c575faccc49ff17e8f14be59da3fd95.stex"
+path="res://.import/Pawn.png-ce08de9834d2acd8fd7d44fc31e89aea.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://D6.png"
-dest_files=[ "res://.import/D6.png-6c575faccc49ff17e8f14be59da3fd95.stex" ]
+source_file="res://src/enemies/default_enemy/Pawn.png"
+dest_files=[ "res://.import/Pawn.png-ce08de9834d2acd8fd7d44fc31e89aea.stex" ]
 
 [params]
 

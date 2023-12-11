@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/towers/wall/StructureWall.png" type="Texture" id=1]
+
+[node name="Wall" type="Node2D" groups=["Obstacles"]]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false

@@ -1,12 +1,8 @@
 extends Node2D
 
+export var health = 0
 export var _speed = 0
-export var can_move = false
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var can_move = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,5 +13,3 @@ func _physics_process(delta):
 	if can_move:
 		var path_follow = get_parent()
 		path_follow.set_offset(path_follow.get_offset() + _speed * delta)
-
-

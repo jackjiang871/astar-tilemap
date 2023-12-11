@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/D6_outline.png-3b4077c841a3714cd66785ea9e8e4670.stex"
+path="res://.import/D6.png-19700ed1211605065377bb5439b9e980.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://D6_outline.png"
-dest_files=[ "res://.import/D6_outline.png-3b4077c841a3714cd66785ea9e8e4670.stex" ]
+source_file="res://src/D6.png"
+dest_files=[ "res://.import/D6.png-19700ed1211605065377bb5439b9e980.stex" ]
 
 [params]
 

@@ -51,7 +51,12 @@ func remove_obstacle(obstacle: Object) -> void:
 func position_has_obstacle(obstacle_position: Vector2, ignore_obstacle_position = null) -> bool:
 	if obstacle_position == ignore_obstacle_position: return false
 	for obstacle in obstacles:
-		if obstacle.global_position == obstacle_position: return true
+		# walls/towers are all 2x2
+		var pos1 = obstacle.global_position
+		var pos2 = Vector2(obstacle.global_position.x, obstacle.global_position.y + cell_size.y)
+		var pos3 = Vector2(obstacle.global_position.x + cell_size.x, obstacle.global_position.y)
+		var pos4 = Vector2(obstacle.global_position.x + cell_size.x, obstacle.global_position.y + cell_size.y)
+		if obstacle_position in [pos1, pos2, pos3, pos4]: return true
 	return false
 
 func get_astar_path(start_position: Vector2, end_position: Vector2, max_distance := -1) -> Array:
@@ -161,9 +166,11 @@ func connect_cardinals(point_position) -> void:
 		var cardinal_point := get_point(point_position + map_to_world(direction))
 		if cardinal_point != center and astar.has_point(cardinal_point):
 			if direction == Vector2(1,1) or direction == Vector2(1,-1): # make sure diagonal does not go through 2 walls
-				var p1 = get_point(point_position + map_to_world(Vector2(direction.x, 0)))
-				var p2 = get_point(point_position + map_to_world(Vector2(0, direction.y)))
-				if astar.has_point(p1) or astar.has_point(p2):
+				var right = point_position + map_to_world(Vector2(direction.x, 0))
+				var bot = point_position + map_to_world(Vector2(0, direction.y))
+				var p1 = not position_has_obstacle(right) || astar.has_point(get_point(right))
+				var p2 = not position_has_obstacle(bot) || astar.has_point(get_point(bot))
+				if p1 or p2:
 					astar.connect_points(center, cardinal_point, true)
 			else:
 				astar.connect_points(center, cardinal_point, true)

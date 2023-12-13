@@ -18,6 +18,7 @@ func _ready():
 	collisionShape.set_shape(attack_area_shape)
 
 func _physics_process(delta):
+	# print(units_in_attack_range, can_attack, attack_range)
 	if units_in_attack_range and can_attack:
 		perform_attack(units_in_attack_range[0])
 	if not can_attack:
@@ -30,7 +31,7 @@ func perform_attack(unit):
 	can_attack = false
 	cooldown = 1.0 / attack_speed
 	var newProjectile = projectileScene.instance()
-	newProjectile._speed = 200
+	newProjectile._speed = 400
 	newProjectile.target = unit
 	newProjectile.connect("area_entered", self, "_on_projectile_hit", [newProjectile])
 	self.add_child(newProjectile)

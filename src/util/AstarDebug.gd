@@ -3,7 +3,6 @@ extends Control
 export(NodePath) onready var board = get_node(board)
 onready var astar = board.astar if board else null
 
-
 func position_has_obstacle(obstacle_position):
 	return board.position_has_obstacle(obstacle_position)
 
